@@ -1,0 +1,207 @@
+// Layout
+
+$mobile: 375px;
+$desktop: 1440px;
+
+//Colors
+
+/// Primary
+
+$softCyan: hsl(174, 77%, 80%);
+$strongCyan: hsl(174, 86%, 45%);
+$lightGrayishRed: hsl(14, 92%, 95%);
+$lightRed: hsl(15, 100%, 70%);
+$paleBlue: hsl(226, 100%, 87%);
+
+/// Neutral
+
+$veryPaleBlue: hsl(230, 100%, 99%);
+$lightGrayishBlueSlider: hsl(224, 65%, 95%);
+$lightGrayishBlueToggle: hsl(223, 50%, 87%);
+$grayishBlue: hsl(225, 20%, 60%);
+$darkDesaturatedBlue: hsl(227, 35%, 25%);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Manrope", sans-serif;
+}
+
+.wrapper {
+  background-image: url("../images/bg-pattern.svg");
+  background-color: $veryPaleBlue;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .title-card {
+    height: 250px;
+    margin-top: -200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../images/pattern-circles.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto 150px;
+    .sub-title {
+      margin: 10px 0 50px 0;
+      color: $grayishBlue;
+    }
+  }
+  .interactive-model {
+    background: $veryPaleBlue;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    box-shadow: 0 0 15px 0 rgba($color: $paleBlue, $alpha: 0.5);
+    border-radius: 10px;
+    .one {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .page-views {
+        color: $grayishBlue;
+        text-transform: uppercase;
+        font-size: 10pt;
+      }
+      .right {
+        display: flex;
+        align-items: center;
+        h1 {
+          margin: 0 5px;
+        }
+        p {
+          color: $grayishBlue;
+          font-size: 10pt;
+        }
+      }
+    }
+    .two {
+      margin: 20px auto;
+      color: $softCyan;
+      background: $strongCyan;
+      padding: 5px;
+      border-radius: 25px;
+      box-shadow: 0 10px 15px 0 $softCyan;
+    }
+    .three {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      p {
+        margin: 10px;
+        font-size: 8pt;
+        color: $grayishBlue;
+      }
+
+      /* The switch - the box around the slider */
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 30px;
+        height: 17px;
+      }
+
+      /* Hide default HTML checkbox */
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      /* The slider */
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+      }
+
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 13px;
+        width: 13px;
+        left: 2px;
+        bottom: 2px;
+        background-color: $veryPaleBlue;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+      }
+
+      input:checked + .slider {
+        background-color: $strongCyan;
+      }
+
+      input:focus + .slider {
+        box-shadow: 0 0 1px $strongCyan;
+      }
+
+      input:checked + .slider:before {
+        -webkit-transform: translateX(13px);
+        -ms-transform: translateX(13px);
+        transform: translateX(13px);
+      }
+
+      /* Rounded sliders */
+      .slider.round {
+        border-radius: 34px;
+      }
+
+      .slider.round:before {
+        border-radius: 50%;
+      }
+      /* Toggle End */
+
+      .discount {
+        color: $lightRed;
+        background: $lightGrayishRed;
+        padding: 5px;
+        margin: 0 0;
+        font-size: 6pt;
+      }
+    }
+    .four {
+      border-top: 1pt solid $paleBlue;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      ul {
+        list-style-image: url("../images/icon-check.svg");
+        font-size: 8pt;
+        margin-left: 20px;
+        li {
+          margin: 20px 0;
+        }
+      }
+      button {
+        padding: 10px 40px;
+        background: $darkDesaturatedBlue;
+        color: $veryPaleBlue;
+        font-size: 8pt;
+        border-radius: 25px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        &:active {
+          background: $strongCyan;
+        }
+      }
+    }
+  }
+}
