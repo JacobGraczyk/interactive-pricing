@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import "./styles/styles.css";
-import Slider from "./images/icon-slider.svg";
 
 function App() {
-  const slider = <img src={Slider} alt="Slider" />;
+  const [rangeValue, setRangeValue] = useState(50);
+
+  const inputRef = useRef();
+  function handleChange(e) {
+    const sliderInput = inputRef.current.value;
+    setRangeValue(sliderInput);
+  }
 
   return (
     <div className="wrapper">
@@ -21,12 +26,23 @@ function App() {
             <p className="month"> / month</p>
           </div>
         </div>
-        <div className="two">{slider}</div>
+        <div className="two">
+          <input
+            type="range"
+            min="1"
+            max="100"
+            ref={inputRef}
+            value={rangeValue}
+            onChange={handleChange}
+            className="rangeSlider"
+            id="myRange"
+          />
+        </div>
         <div className="three">
           <p className="monthly-billing">Monthly Billing</p>
-          <label class="switch">
+          <label className="switch">
             <input type="checkbox" />
-            <span class="slider round"></span>
+            <span className="slider round"></span>
           </label>
           <p className="yearly-billing">Yearly Billing</p>
           <p className="discount">25% discount</p>
