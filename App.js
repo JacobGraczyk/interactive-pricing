@@ -18,28 +18,61 @@ function App() {
   let info;
   switch (rangeValue) {
     case "1":
-      info = { pageViews: "10k", perMonth: 8 };
+      info = {
+        pageViews: "10k",
+        perMonth: 8,
+        gradient: "0%",
+      };
       break;
     case "2":
-      info = { pageViews: "50k", perMonth: 12 };
+      info = {
+        pageViews: "50k",
+        perMonth: 12,
+        gradient: "25%",
+      };
       break;
     case "3":
-      info = { pageViews: "100k", perMonth: 16 };
+      info = {
+        pageViews: "100k",
+        perMonth: 16,
+        gradient: "50%",
+      };
       break;
     case "4":
-      info = { pageViews: "500k", perMonth: 24 };
+      info = {
+        pageViews: "500k",
+        perMonth: 24,
+        gradient: "75%",
+      };
       break;
     case "5":
-      info = { pageViews: "1m", perMonth: 36 };
+      info = {
+        pageViews: "1m",
+        perMonth: 36,
+        gradient: "100%",
+      };
       break;
     default:
-      info = { pageViews: "100k", perMonth: 16 };
+      info = {
+        pageViews: "100k",
+        perMonth: 16,
+        gradient: "50%",
+      };
   }
 
   const discountOff = info.perMonth * 0.25;
   const discount = info.perMonth - discountOff;
   let price;
   toggleStatus ? (price = discount) : (price = info.perMonth);
+
+  const rangeSliderStyle = {
+    background:
+      "linear-gradient(to right, hsl(174, 77%, 80%)" +
+      info.gradient +
+      ", hsl(224, 65%, 95%)" +
+      info.gradient +
+      ")",
+  };
 
   return (
     <div className="wrapper">
@@ -66,6 +99,7 @@ function App() {
             value={rangeValue}
             onChange={handleChange}
             className="rangeSlider"
+            style={rangeSliderStyle}
             id="myRange"
           />
         </div>
