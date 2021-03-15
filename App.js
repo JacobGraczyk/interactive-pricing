@@ -2,13 +2,44 @@ import React, { useState, useRef } from "react";
 import "./styles/styles.css";
 
 function App() {
-  const [rangeValue, setRangeValue] = useState(50);
+  const [rangeValue, setRangeValue] = useState("3");
+  const [toggleStatus, setToggleStatus] = useState(false);
 
   const inputRef = useRef();
   function handleChange(e) {
     const sliderInput = inputRef.current.value;
     setRangeValue(sliderInput);
   }
+
+  function handleToggle() {
+    setToggleStatus(!toggleStatus);
+  }
+
+  let info;
+  switch (rangeValue) {
+    case "1":
+      info = { pageViews: "10k", perMonth: 8 };
+      break;
+    case "2":
+      info = { pageViews: "50k", perMonth: 12 };
+      break;
+    case "3":
+      info = { pageViews: "100k", perMonth: 16 };
+      break;
+    case "4":
+      info = { pageViews: "500k", perMonth: 24 };
+      break;
+    case "5":
+      info = { pageViews: "1m", perMonth: 36 };
+      break;
+    default:
+      info = { pageViews: "100k", perMonth: 16 };
+  }
+
+  const discountOff = info.perMonth * 0.25;
+  const discount = info.perMonth - discountOff;
+  let price;
+  toggleStatus ? (price = discount) : (price = info.perMonth);
 
   return (
     <div className="wrapper">
@@ -20,9 +51,9 @@ function App() {
       </div>
       <div className="interactive-model">
         <div className="one">
-          <p className="page-views">100k pageviews</p>
+          <p className="page-views">{info.pageViews} pageviews</p>
           <div className="right">
-            <h1 className="price">$16.00</h1>
+            <h1 className="price">${price}.00</h1>
             <p className="month"> / month</p>
           </div>
         </div>
@@ -30,7 +61,7 @@ function App() {
           <input
             type="range"
             min="1"
-            max="100"
+            max="5"
             ref={inputRef}
             value={rangeValue}
             onChange={handleChange}
@@ -41,7 +72,11 @@ function App() {
         <div className="three">
           <p className="monthly-billing">Monthly Billing</p>
           <label className="switch">
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              checked={toggleStatus}
+              onChange={handleToggle}
+            />
             <span className="slider round"></span>
           </label>
           <p className="yearly-billing">Yearly Billing</p>

@@ -240,8 +240,11 @@ body {
         border: none;
         outline: none;
         cursor: pointer;
+        &:hover {
+          background: rgba($darkDesaturatedBlue, .8);
+        }
         &:active {
-          background: $strongCyan;
+          background: rgba($darkDesaturatedBlue, .9);
         }
       }
     }
